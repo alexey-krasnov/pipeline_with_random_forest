@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 """Pipeline that takes data from the database (SQLite),
 prepares the data, makes predictions using the trained model by modeling.py,
-and saves: the results of the predictions, top 10 features by importance to the new table files."""
+and saves: the results of the predictions, top 10 features by importance to the new table files"""
 
 
 import sqlite3
