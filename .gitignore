@@ -1,0 +1,15 @@
+__pychache__/
+env_2.7/
+*.bak
+*.txt
+*.xlsx
+*.png
+*.pyc
+*.pkl
+*.csv
+*.docx
+.DS_Store
+!requirements.txt
+*.db
+main_py.py
+pipeline_with_classes.py
