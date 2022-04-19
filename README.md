@@ -1,5 +1,5 @@
-# random_forest_modeling
-Ppipeline that takes data from the database (SQLite), prepares the data, makes predictions using the trained model, and saves the result of the predictions to a new table.
+# pipeline_with_random_forest
+Ppipeline that takes data from the database (SQLite), prepares the data, makes predictions using the trained model of random forest, and saves the result of the predictions to a new table.
 
 ##  Prerequisites
 
