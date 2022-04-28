@@ -12,16 +12,19 @@ This package requires:
 - [Joblib](https://joblib.readthedocs.io/en/latest/)
 
 ## Decription
-1) ```modeling.py``` works with the initial data provided by the link [train_data_200k.csv](https://drive.google.com/file/d/1RQPXq6cBFBRNOJD1-5QGBtA2tuNbQvZr/view?usp=sharing). Script creates and saves a model of Random Forest regression aimed to predict the values of the Target_1...4 parameters using the values of Tag_1...79.
+1) ```modeling.py``` works with the initial data provided by train_data_200k.csv. Script creates and saves a model of Random Forest regression aimed to predict the values of the Target_1...4 parameters using the values of Tag_1...79.
 
-2) ```pipeline.py```  takes data from the database (SQLite [test_data_100k](https://drive.google.com/file/d/15hEL073pA1Vag74nwig_fcPHN-44f1JP/view?usp=sharing)), prepares the data, makes predictions using the trained model by ```modeling.py```, and saves the result of the predictions, top 10 features by importance to a new table files.
+2) ```pipeline.py```  takes data from the database (SQLite test_data_100k), prepares the data, makes predictions using the trained model by ```modeling.py```, and saves the result of the predictions, top 10 features by importance to a new table files.
 
 ## Usage
-Files [train_data_200k.csv](https://drive.google.com/file/d/1RQPXq6cBFBRNOJD1-5QGBtA2tuNbQvZr/view?usp=sharing) and [test_data_100k](https://drive.google.com/file/d/15hEL073pA1Vag74nwig_fcPHN-44f1JP/view?usp=sharing) should be within the working directory. To start the program, run:
+Files train_data_200k.csv and test_data_100k should be within the working directory. To start the program, run:
 ```sh
 pipeline.py
 ```
 it imports ```modeling.py``` which stores model for further prediction. If the file with model has already been generated, ```pipeline.py``` will imports it directly and make predictions.
+
+## Note
+The program migth taken several minutes to perform modeling.
 
 ## Author
 
