@@ -31,9 +31,9 @@ def database_reading(*args):
 
 
 def prepare_data_frame(df):
-    """Drop 'Unnamed: 0' column and fill NaN values with 0"""
-    df.drop('Unnamed: 0', axis=1, inplace=True)
-    df = df.fillna(0)
+    """Fill NaN values with mean along column"""
+    for f in df.columns.values:
+        df[f].fillna(df[f].mean(), inplace=True)
     return df
 
 
@@ -68,11 +68,8 @@ def load_model(model_name):
 def predict_model(model, X_stand):
     """Make prediction based on loaded model"""
     y_pred = model.predict(X_stand)
-    predicted_data_frame = pd.DataFrame(y_pred, columns=['target1',
-                                                      'target2',
-                                                      'target3',
-                                                      'target4',
-                                                      ])
+    predicted_data_frame = pd.DataFrame(y_pred, columns=['target1', 'target2',
+                                                         'target3', 'target4'])
     return predicted_data_frame
 
 

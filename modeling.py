@@ -12,10 +12,15 @@ from sklearn import metrics
 
 
 def open_train_dataset(data_name):
-    """Open train dataset and fill NaN values with 0 """
-    df = pd.read_csv(data_name).fillna(0)
-    # Drop the first unused column
-    df.drop('Unnamed: 0', axis=1, inplace=True)
+    """Open train dataset and fill NaN values with mean along column"""
+    df = pd.read_csv(data_name)
+    return df
+
+
+def prepare_data(df):
+    """Fill NaN values with mean along column"""
+    for f in df.columns.values:
+        df[f].fillna(df[f].mean(), inplace=True)
     return df
 
 
@@ -56,9 +61,10 @@ def make_final_model(X_stand, y, model_name):
 
 def main(model_name):
     """Main function to perform training and make model of random forest """
-    train_data = 'train_data_200k.csv'
+    TRAIN_DATA = 'train_data_200k.csv'
     scaler = StandardScaler()
-    train_df = open_train_dataset(train_data)
+    train_df = open_train_dataset(data_name=TRAIN_DATA)
+    train_df = prepare_data(df=train_df)
     features_names = get_features_names(df=train_df)
     X, y = make_x_y(train_df, features_names)
     # Split of Train Data 200k to evaluate model accuracy

@@ -11,5 +11,8 @@ env_2.7/
 .DS_Store
 !requirements.txt
 *.db
-main_py.py
-pipeline_with_classes.py
+*.py
+!modeling.py
+!pipeline.py
+!test_data_100k.csv
+!train_data_200k.csv
