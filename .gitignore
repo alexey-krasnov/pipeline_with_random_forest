@@ -14,5 +14,3 @@ env_2.7/
 *.py
 !modeling.py
 !pipeline.py
-!test_data_100k.csv
-!train_data_200k.csv
