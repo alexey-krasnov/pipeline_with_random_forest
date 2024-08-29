@@ -67,13 +67,19 @@ def main(model_name):
     train_df = prepare_data(df=train_df)
     features_names = get_features_names(df=train_df)
     X, y = make_x_y(train_df, features_names)
+
     # Split of Train Data 200k to evaluate model accuracy
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=101)
-    # Standardization of train/test subset features and all features
-    X_train_stand = scaler.fit_transform(X_train)
-    X_test_stand = scaler.fit_transform(X_test)
-    X_stand = scaler.fit_transform(X)
+
+    # Standardization of train/test subset features
+    X_train_stand = scaler.fit_transform(X_train)  # Fit the scaler on the training data
+    X_test_stand = scaler.transform(X_test)        # Transform the test data using the same scaler
+
+    # If you need to standardize the entire dataset:
+    X_stand = scaler.transform(X)  # Transform the entire dataset using the same scaler fitted on X_train
+
     evaluate_model(X_train_stand, X_test_stand, y_train, y_test)
+
     return make_final_model(X_stand, y, model_name)
 
 
