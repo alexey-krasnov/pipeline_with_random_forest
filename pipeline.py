@@ -72,12 +72,6 @@ def predict_model(model, X_stand):
                                                          'target3', 'target4'])
     return predicted_data_frame
 
-
-def export_prediction(predict_data_frame):
-    """Export predicted values as prediction.csv file"""
-    predict_data_frame.to_csv('prediction.csv', index=False)
-
-
 def hist_plot(predict_data_frame):
     """ Plot histogram of predicted values"""
     predict_data_frame.hist()
@@ -93,12 +87,19 @@ def top_10_feats(model, features_names):
 
 if __name__ == "__main__":
     loaded_df = database_reading()
+
     working_df = prepare_data_frame(loaded_df)
     features = get_features_names(df=working_df)
+
     X = make_x(df=working_df, features_names=features)
     X_stand = feats_standardization(X)
+
     loaded_model = load_model(modeling.MODEL_NAME)
     prediction = predict_model(loaded_model, X_stand)
-    export_prediction(prediction)
+
+    # Export predicted values as prediction.csv file
+    prediction.to_csv('prediction.csv', index=False)
+    # prediction.to_parquet('prediction.parquet', index=False, engine='fastparquet')
+
     hist_plot(prediction)
     top_10_feats(loaded_model, features)
